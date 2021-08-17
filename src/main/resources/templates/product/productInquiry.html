@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="../static/css/product/productInquiry.css" />
+<script src="../static/js/product/productInquiry.js" type="text/javascript"></script>
+<body>
+  <div class="container">
+    <ul class="nav nav-pills nav-fill">
+      <li class="nav-item">
+        <a class="nav-link active" href="/">홈</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/order">주문창</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/login">주문내역</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">결제내역</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="container mt-2">
+    <label>메뉴</label>
+  </div>
+
+  <div class="container">
+    <div class="box">
+      <div id="tab">
+        <ul style="height: 100%;">
+          <th:block th:each="data:${list}">
+            <li style="width: 350px;" onclick="pushBasket(this);">
+              <div class="card" style="width: 100%;">
+                <img style="width: 286px;height: 180px;" class="card-img-top" th:src="${data.productImage}" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title" th:text="${data.productName}"></h5>
+                  <p th:text="${data.productCost}"></p>
+                  <input type="hidden" th:value="${data.productId}" name="productId" />
+                  <input type="hidden" th:value="${data.productName}" name="productName" />
+                  <input type="hidden" th:value="${data.productCost}" name="productCost" />
+                  <input type="hidden" th:value="${data.productImage}" name="productImage" />
+                </div>
+              </div>
+            </li>
+          </th:block>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-2">
+    <label>장바구니</label>
+  </div>
+
+  <div class="container mt-2">
+    <div class="basketBox" id="basketBox">
+      <div id="basketTab">
+        <ul style="height: 100%;" id="basketList">
+
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="container mt-1">
+    <button class="btn btn-primary" onclick="basketOrder();">주문하기</button>
+    <button class="btn btn-primary" onclick="basketClear();">장바구니 전체삭제</button>
+  </div>
+
+
+</body>
+</html>
