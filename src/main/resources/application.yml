@@ -4,10 +4,10 @@ spring:
       enabled: true
 
   datasource:
-    url : jdbc:mysql://rtbox.synology.me:3307/gogs?zeroDateTimeBehavior=convertToNull&useSSL=true&verifyServerCertificate=false&useUnicode=true&characterEncoding=utf8
+    url : jdbc:mysql://database:3306/testpro?zeroDateTimeBehavior=convertToNull&useSSL=false&verifyServerCertificate=false&useUnicode=true&characterEncoding=utf8&autoReconnection=true
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: returnBox!1016
+    username: mysql_user
+    password: mysql_password
 
   jpa:
     hibernate:

@@ -55,11 +55,11 @@ public class Order {
     private Date createDate;
 
     @Column(name = "updatedate")
-    @ColumnDefault("0000-00-00 00:00:00")
+    @ColumnDefault("current_timestamp()")
     private Date updateDate;
 
     @Column(name = "deletedate")
-    @ColumnDefault("0000-00-00 00:00:00")
+    @ColumnDefault("current_timestamp()")
     private Date deleteDate;
 
     @Column(name = "payment")

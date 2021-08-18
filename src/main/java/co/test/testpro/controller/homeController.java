@@ -29,13 +29,13 @@ public class homeController {
 
     @GetMapping("/login")
     public String loginPage(){
-        return "/user/login";
+        return "user/login";
     }
 
     @GetMapping("/order")
     public String order(Model model){
         List<Product> list = productService.getProductList();
         model.addAttribute("list",list);
-        return "/product/productInquiry";
+        return "product/productInquiry";
     }
 }
