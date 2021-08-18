@@ -8,13 +8,11 @@ import io.lettuce.core.dynamic.annotation.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/order")
@@ -32,4 +30,8 @@ public class OrderController {
         return new ResponseEntity<>(new DefaultResponseDto(200,"주문등록"), HttpStatus.OK);
     }
 
+    @PostMapping("/payToOrder")
+    public ResponseEntity<?> payToOrder(String username){
+        return new ResponseEntity<>(new DefaultResponseDto(200,"주문등록"), HttpStatus.OK);
+    }
 }

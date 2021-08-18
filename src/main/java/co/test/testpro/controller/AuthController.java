@@ -7,6 +7,7 @@ import co.test.testpro.dto.TokenDto;
 import co.test.testpro.jwt.JwtFilter;
 import co.test.testpro.jwt.TokenProvider;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.http.HttpHeaders;
@@ -31,7 +32,7 @@ public class AuthController {
     private final TokenProvider tokenProvider;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private final StringRedisTemplate redisTemplate = new StringRedisTemplate();
-
+    private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
 
     public AuthController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder) {
         this.tokenProvider = tokenProvider;
@@ -67,7 +68,7 @@ public class AuthController {
         ValueOperations<String, String> logoutValueOperations = redisTemplate.opsForValue();
         logoutValueOperations.set(jwt, jwt); // redis set 명령어
         User user = (User) tokenProvider.getAuthentication(jwt).getPrincipal();
-//        Logger.("로그아웃 유저 아이디 : '{}' , 유저 이름 : '{}'", user.getUserId(), user.getUsername());
+        logger.debug("로그아웃 유저 아이디 : '{}' , 유저 이름 : '{}'", user.getUserId(), user.getUsername());
         return new ResponseEntity<>(new DefaultResponseDto(200,"로그아웃 되었습니다."), HttpStatus.OK);
 
     }

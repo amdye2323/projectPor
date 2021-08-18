@@ -2,6 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <body>
+<th:block th:replace="config :: configFragment"></th:block>
+<th:block th:replace="header :: headerFragment"></th:block>
     <div class="container">
         <div>
             <h1>Hello Spring</h1>
@@ -9,9 +11,6 @@
             <p id="userId"></p>
             <p>
                 <a href="/login">로그인</a>
-            </p>
-            <p>
-                <a href="/order">주문페이지</a>
             </p>
         </div>
     </div>

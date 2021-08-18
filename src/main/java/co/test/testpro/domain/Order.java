@@ -56,7 +56,7 @@ public class Order {
     @Column(columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP" , name = "updatedate")
     private Date updateDate;
 
-    @Column(columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP" , name = "deletedate")
+    @Column(columnDefinition = "DATETIME DEFAULT '0000-00-00 00:00:00'" , name = "deletedate")
     private Date deleteDate;
 
     @Column(name = "payment")

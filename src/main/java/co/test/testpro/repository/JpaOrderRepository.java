@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class JapOrderRepository implements OrderRepository {
+public class JpaOrderRepository implements OrderRepository {
 
     private final EntityManager em;
 
-    public JapOrderRepository(EntityManager em){
+    public JpaOrderRepository(EntityManager em){
         this.em = em;
     }
 
@@ -34,7 +34,8 @@ public class JapOrderRepository implements OrderRepository {
 
     @Override
     public List<Order> findOrderList(String username) {
-        List<Order> result = em.createQuery("select o from Order as o",Order.class)
+        List<Order> result = em.createQuery("select o from Order as o where o.username = :username ",Order.class)
+                .setParameter("username",username)
                 .getResultList();
         return result;
     }
