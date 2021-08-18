@@ -4,10 +4,10 @@ spring:
       enabled: true
 
   datasource:
-    url : jdbc:mysql://database:3306/testpro?zeroDateTimeBehavior=convertToNull&useSSL=false&verifyServerCertificate=false&useUnicode=true&characterEncoding=utf8&autoReconnection=true
+    url : jdbc:mysql://172.30.1.59:3307/gogs?zeroDateTimeBehavior=convertToNull&useSSL=false&verifyServerCertificate=false&useUnicode=true&characterEncoding=utf8&autoReconnection=true
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: mysql_user
-    password: mysql_password
+    username: root
+    password: returnBox!1016
 
   jpa:
     hibernate:

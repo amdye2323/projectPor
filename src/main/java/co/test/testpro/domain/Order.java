@@ -50,16 +50,13 @@ public class Order {
     @Column(name = "productcost")
     private int productCost;
 
-    @Column(name = "createdate")
-    @ColumnDefault("current_timestamp()")
+    @Column(columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP" , name = "createdate")
     private Date createDate;
 
-    @Column(name = "updatedate")
-    @ColumnDefault("current_timestamp()")
+    @Column(columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP" , name = "updatedate")
     private Date updateDate;
 
-    @Column(name = "deletedate")
-    @ColumnDefault("current_timestamp()")
+    @Column(columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP" , name = "deletedate")
     private Date deleteDate;
 
     @Column(name = "payment")

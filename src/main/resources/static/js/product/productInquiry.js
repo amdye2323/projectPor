@@ -1,5 +1,4 @@
 $(function () {
-    console.log("주문 시작");
     basketSet();
 });
 
@@ -28,7 +27,6 @@ function pushBasket(product) {
         productList.map(
             function (o) {
                 if(o.productId==productId){
-                    console.log(o.productId);
                     o.productCount = parseInt(o.productCount) + 1;
                     count++;
                 }
@@ -51,7 +49,6 @@ function basketClear() {
     localStorage.clear();
     localStorage.setItem("jwt",jwt);
     localStorage.setItem("username",username);
-    console.log(localStorage.getItem("username"));
     basketSet();
 }
 
@@ -144,11 +141,17 @@ function basketOrder() {
         headers: { "Authorization": 'Bearer ' + token },
         dataType : "json",
         method : "POST",
-        success:function (e) {
-            
+        success:function (msg) {
+            if(msg.status===200){
+                alert(msg.responseMessage+"이 완료되었습니다.");
+                localStorage.removeItem("ProductArray");
+                basketSet();
+            }else{
+                alert("서버 오류입니다.관리자에게 문의해주세요.");
+            }
         },
-        error:function () {
-            
+        error:function (e) {
+            alert(e+" 관련 에러입니다. 관리자에게 문의해주세요.");
         }
     });
 }
