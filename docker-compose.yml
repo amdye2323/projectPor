@@ -11,7 +11,7 @@ services:
     ports:
       - 3306:3306
   application:
-    build: ../projectPor
+    build: ../por
     environment: 
       MYSQL_DATABASE: testpro
       MYSQL_ROOT_PASSWORD: mysql_root_password

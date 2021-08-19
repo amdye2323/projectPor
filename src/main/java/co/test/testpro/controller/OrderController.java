@@ -1,6 +1,7 @@
 package co.test.testpro.controller;
 
 import co.test.testpro.domain.Order;
+import co.test.testpro.domain.paytable;
 import co.test.testpro.dto.DefaultResponseDto;
 import co.test.testpro.dto.ProductDto;
 import co.test.testpro.service.OrderService;
@@ -14,10 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 @Controller
 @RequestMapping("/order")
@@ -50,6 +48,15 @@ public class OrderController {
         obj.put("totalCount",totalCount);
         obj.put("msg",new DefaultResponseDto(200,"결제완료"));
 
+        return new ResponseEntity<>(obj, HttpStatus.OK);
+    }
+
+    @PostMapping("/payList")
+    public ResponseEntity<?> payList(String username){
+        Optional<List<paytable>> list = orderService.getPayList(username);
+        JSONObject obj = new JSONObject();
+        obj.put("list",list);
+        obj.put("msg",new DefaultResponseDto(200,"호출완료"));
         return new ResponseEntity<>(obj, HttpStatus.OK);
     }
 

@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<header>
+    <th:block th:replace="config :: configFragment"></th:block>
+</header>
 <body>
-<th:block th:replace="config :: configFragment"></th:block>
 <th:block th:replace="header :: headerFragment"></th:block>
     <div class="container">
         <div>
-            <h1>Hello Spring</h1>
-            <p>회원 기능</p>
-            <p id="userId"></p>
-            <p>
-                <a href="/login">로그인</a>
-            </p>
+            <div class="container row" style="float: none;margin: auto;">
+                <div class="col-md-3" style="float: none;margin: 0 auto;">
+                    <h1>홈</h1>
+                    <p>회원 기능</p>
+                    <p id="userId"></p>
+                </div>
+            </div>
+            <div id="loginBox" class="container row" style="float: none;margin: auto; width: 400px;height: 300px;">
+                <div class="col-md-3" style="float: none;margin: 0 auto;">
+                    <div class="mt-4">
+                        <a class="btn btn-primary" id="signBtn" href="/signPage">회원가입</a>
+                        <a class="btn btn-info" id="loginBtn" href="/login">로그인</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </body>

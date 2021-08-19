@@ -52,11 +52,8 @@ public class Order {
     @Column(name = "productcost")
     private int productCost;
 
-    @Column(columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP" , name = "createdate")
+    @Column(columnDefinition = "TIEMSTAMP DEFAULT CURRENT_TIMESTAMP" , name = "createdate")
     private Date createDate;
-
-    @Column(columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP" , name = "updatedate")
-    private Date updateDate;
 
     @Column(columnDefinition = "DATETIME DEFAULT '0000-00-00 00:00:00'" , name = "deletedate")
     private Date deleteDate;

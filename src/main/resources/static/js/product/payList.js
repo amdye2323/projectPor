@@ -1,18 +1,45 @@
 $(function () {
-    let username = localStorage.getItem("username");
-    $("#userId").text(username);
-    if(username!=null){
-        $("#loginBox").hide();
-        $("#signBtn").hide();
-        $("#loginBtn").hide();
-        $("#logoutBtn").show();
-    }else{
-        $("#loginBox").show();
-        $("#signBtn").show();
-        $("#loginBtn").show();
-        $("#logoutBtn").hide();
-    }
+   payInquiry(); 
 });
+
+
+function payInquiry() {
+    var username = localStorage.getItem("username");
+    var token = localStorage.getItem("jwt");
+
+    $.ajax({
+        url : "order/payList",
+        method : "POST",
+        dataType : "json",
+        data : {
+            "username" : username
+        },
+        headers: { "Authorization": 'Bearer ' + token },
+        success:function (data) {
+            var list = data.list;
+            var count = data.totalCount;
+            $("#totalCost").text(count);
+            if(data.msg.status==200){
+                var li = $("#payList");
+                li.empty();
+                var html = "";
+                for(var i = 0;i<list.length;i++){
+                    html += "<tr>";
+                    html += "<td>"+list[i].username+"</td>";
+                    html += "<td>"+list[i].cost+"</td>";
+                    html += "<td>"+list[i].paygubun+"</td>";
+                    html += "<td>"+list[i].createDate+"</td>";
+                    html += "</tr>";
+                }
+                li.append(html);
+            }
+        },
+        error : function () {
+
+        }
+    });
+
+}
 
 function doPage(url) {
     var token = localStorage.getItem("jwt");
@@ -30,7 +57,6 @@ function doPage(url) {
         headers : {
             "Authorization": "Bearer " + token,
         },
-        contentType: 'application/json',
         method:"POST",
         success:function (msg) {
             if(msg.status==200){

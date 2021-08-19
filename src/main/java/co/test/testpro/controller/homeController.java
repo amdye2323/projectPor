@@ -57,6 +57,11 @@ public class homeController {
         return "product/orderSheet";
     }
 
+    @GetMapping("/signPage")
+    public String signPage(){
+        return "user/signUp";
+    }
+
     @GetMapping("/payList")
     public String getPayList(String username,Model model){
         return "product/payList";

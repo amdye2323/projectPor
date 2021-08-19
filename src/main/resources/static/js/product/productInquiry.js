@@ -121,15 +121,18 @@ function basketOrder() {
     var array = new Array();
     productList.map(
         function (o) {
-            var obj = new Object();
-            obj.username = localStorage.getItem("username");
-            obj.productId = o.productId;
-            obj.productName = o.productName;
-            obj.productImage = o.productImage;
-            obj.productCost = o.productCost;
-            obj.productCount = o.productCount;
-            obj.productTotalCount = parseInt(o.productCost.toString()) * parseInt(o.productCount.toString());
-            array.push(obj);
+            if(parseInt(o.productCount)>=1){
+                var obj = new Object();
+                obj.username = localStorage.getItem("username");
+                obj.productId = o.productId;
+                obj.productName = o.productName;
+                obj.productImage = o.productImage;
+                obj.productCost = o.productCost;
+                obj.productCount = o.productCount;
+                obj.productTotalCount = parseInt(o.productCost.toString()) * parseInt(o.productCount.toString());
+                array.push(obj);
+            }
+
         }
     );
     var token = localStorage.getItem("jwt");
@@ -182,6 +185,30 @@ function doPage(url) {
         },
         error:function (e) {
             alert("jwt 토큰 오류입니다.관리자에게 문의해주세요.");
+        }
+    });
+};
+
+function logOut() {
+    var token = localStorage.getItem("jwt");
+    $.ajax({
+        url : "/api/auth",
+        data : {
+            "username" : localStorage.getItem("username")
+        },
+        headers : {
+            "Authorization": "Bearer " + token,
+        },
+        contentType: 'application/json',
+        method : "POST",
+        dataType : "json",
+        success:function () {
+            localStorage.removeItem("jwt");
+            localStorage.removeItem("username");
+            location.href = "/";
+        },
+        error:function (e) {
+            alert(e);
         }
     });
 };

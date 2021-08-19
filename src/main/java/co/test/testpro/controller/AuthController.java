@@ -70,11 +70,10 @@ public class AuthController {
     @PostMapping("/logout")
     @Transactional
     public ResponseEntity<?> logout(String jwt){
-        ValueOperations<String, String> logoutValueOperations = redisTemplate.opsForValue();
-        logoutValueOperations.set(jwt, jwt); // redis set 명령어
+//        ValueOperations<String, String> logoutValueOperations = redisTemplate.opsForValue();
+//        logoutValueOperations.set(jwt, jwt); // redis set 명령어
         User user = (User) tokenProvider.getAuthentication(jwt).getPrincipal();
         logger.debug("로그아웃 유저 아이디 : '{}' , 유저 이름 : '{}'", user.getUserId(), user.getUsername());
         return new ResponseEntity<>(new DefaultResponseDto(200,"로그아웃 되었습니다."), HttpStatus.OK);
-
     }
 }

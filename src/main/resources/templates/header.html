@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org">
 
   <div th:fragment="headerFragment" class="container">
     <ul class="nav nav-pills nav-fill">
@@ -17,7 +16,7 @@
         <a class="nav-link" onclick="doPage('/payList')">결제내역</a>
       </li>
       <li>
-        <a class="nav-list" onclick="logOut();"></a>
+        <a id="logoutBtn" class="nav-list" onclick="logOut();">로그아웃</a>
       </li>
     </ul>
   </div>
