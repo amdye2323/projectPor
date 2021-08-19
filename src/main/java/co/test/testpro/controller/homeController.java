@@ -56,4 +56,9 @@ public class homeController {
         model.addAttribute("totalCost",totalCount);
         return "product/orderSheet";
     }
+
+    @GetMapping("/payList")
+    public String getPayList(String username,Model model){
+        return "product/payList";
+    }
 }

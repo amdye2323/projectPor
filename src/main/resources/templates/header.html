@@ -8,13 +8,13 @@
         <a class="nav-link active" href="/">홈</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/orderpage">주문창</a>
+        <a class="nav-link" onclick="doPage('/orderpage')">주문창</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" onclick="doPageHome('/getOrderSheet')">주문내역</a>
+        <a class="nav-link" onclick="doPage('/getOrderSheet')">주문내역</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/payList">결제내역</a>
+        <a class="nav-link" onclick="doPage('/payList')">결제내역</a>
       </li>
       <li>
         <a class="nav-list" onclick="logOut();"></a>
@@ -22,35 +22,7 @@
     </ul>
   </div>
   <script>
-    function doPage(url) {
-      var token = localStorage.getItem("jwt");
-      const headers =  {
-        "Authorization": "Bearer " + token,
-      };
-      const init = {
-        "method" : "GET",
-        "headers" : headers
-      }
-      fetch(url,init);
-    };
 
-    function logOut() {
-      $.ajax({
-        url : "/api/logout",
-        data : {
-          "username" : localStorage.getItem("username")
-        },
-        method : "POST",
-        dataType : "json",
-        success:function () {
-          localStorage.removeItem("jwt");
-          localStorage.removeItem("username");
-        },
-        error:function (e) {
-          alert(e);
-        }
-      });
-    };
 
   </script>
 </html>

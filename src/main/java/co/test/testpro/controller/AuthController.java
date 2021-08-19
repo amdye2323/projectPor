@@ -62,6 +62,11 @@ public class AuthController {
         return new ResponseEntity<>(result, httpHeaders, HttpStatus.OK); //tokenDTo릴 이용해서 responsebody에도 넣어서 리턴
     }
 
+    @PostMapping("/auth")
+    public ResponseEntity<?> auth() {
+        return new ResponseEntity<>(new DefaultResponseDto(200,"로그아웃 되었습니다."), HttpStatus.OK);
+    }
+
     @PostMapping("/logout")
     @Transactional
     public ResponseEntity<?> logout(String jwt){

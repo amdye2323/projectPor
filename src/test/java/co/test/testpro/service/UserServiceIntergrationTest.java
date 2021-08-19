@@ -24,7 +24,6 @@ public class UserServiceIntergrationTest {
     @Test
     @Commit
     public void join() throws Exception{
-
         //given
         User user = new User();
         user.setUsername("hello");
