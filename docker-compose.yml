@@ -1,22 +1,19 @@
 version: '3'
 services:
-  database:
+  database-container:
     # Dockerfile이 있는 위치
     build: ./database
-    # 내부에서 개방할 포트 : 외부에서 접근할 포트
-    # volumes:
-    #   - ~/docker/mariadb/etc/mysql/conf.d:/etc/mysql/conf.d:ro
-    #   - ~/docker/mariadb/var/lib/mysql:/var/lib/mysql
-    #   - ~/docker/mariadb/var/log/maria:/var/log/maria
     ports:
       - 3306:3306
   application:
-    build: ../projectPor
-    environment: 
+    build: .
+    environment:  
       MYSQL_DATABASE: testpro
-      MYSQL_ROOT_PASSWORD: mysql_root_password
-      MYSQL_ROOT_HOST: '%'
+      MYSQL_USER :  mysql_user
+      MYSQL_PASSWORD : mysql_password
+      # MYSQL_ROOT_PASSWORD: mysql_root_password
+      # MYSQL_ROOT_HOST: '%'
     ports:
       - 8080:8080
     depends_on:
-      - database
+      - database-container
