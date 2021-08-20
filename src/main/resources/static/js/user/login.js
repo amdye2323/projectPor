@@ -19,7 +19,7 @@ function login(){
          var dbo = data;
          localStorage.setItem("jwt",dbo.token);
          localStorage.setItem("username",dbo.user);
-         location.href = "/order";
+         location.href = "/orderpage";
       },
       error : function (e) {
          alert(e+"에러입니다");

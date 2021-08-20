@@ -11,8 +11,6 @@ services:
       MYSQL_DATABASE: testpro
       MYSQL_USER :  mysql_user
       MYSQL_PASSWORD : mysql_password
-      # MYSQL_ROOT_PASSWORD: mysql_root_password
-      # MYSQL_ROOT_HOST: '%'
     ports:
       - 8080:8080
     depends_on:

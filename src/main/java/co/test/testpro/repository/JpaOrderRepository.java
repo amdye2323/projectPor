@@ -108,7 +108,7 @@ public class JpaOrderRepository implements OrderRepository {
     @Override
     public Optional<List<paytable>> findPayList(String username) {
         try {
-            List<paytable> list = em.createQuery("select p from paytable as p where p.deleteDate = '0000-00-00 00:00:00' ",paytable.class)
+            List<paytable> list = em.createQuery("select p from paytable as p ",paytable.class)
                     .getResultList();
             return Optional.ofNullable(list);
         }catch (Exception e){

@@ -12,22 +12,22 @@ CREATE TABLE `ordertable` (
   `productstandard` int(11) NOT NULL DEFAULT 0 COMMENT '제품단가',
   `productcount` int(11) NOT NULL DEFAULT 0 COMMENT '제품갯수',
   `productcost` int(11) NOT NULL DEFAULT 0 COMMENT '가격',
-  `createdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT '등록일',
-  `deletedate` datetime NOT NULL COMMENT '삭제일',
+  `createdate` datetime NOT NULL DEFAULT current_timestamp() COMMENT '등록일',
+  `deletedate` datetime COMMENT '삭제일',
   `payment` int(2) DEFAULT 0 COMMENT '결제전:0,결제완료:1',
   `payid` bigint(10) DEFAULT NULL COMMENT '결제아이디',
   PRIMARY KEY (`orderId`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `paytable` (
   `payid` bigint(10) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '유저아이디',
   `cost` int(11) NOT NULL DEFAULT 0 COMMENT '가격',
   `paygubun` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '제품이름',
-  `createdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT '등록일',
-  `deletedate` datetime NOT NULL COMMENT '삭제일',
+  `createdate` datetime NOT NULL DEFAULT current_timestamp() COMMENT '등록일',
+  `deletedate` datetime COMMENT '삭제일',
   PRIMARY KEY (`payid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `product` (
@@ -36,7 +36,7 @@ CREATE TABLE `product` (
                            `product_cost` int(11) unsigned NOT NULL DEFAULT 0 COMMENT '제품가격',
                            `product_image` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '제품 이미지',
                            PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `user` (
                         `user_id` bigint(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -46,7 +46,7 @@ CREATE TABLE `user` (
                         `activated` tinyint(4) DEFAULT NULL,
                         PRIMARY KEY (`user_id`),
                         UNIQUE KEY `user_accountId_uindex` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `user_authority` (
                                   `user_id` bigint(10) NOT NULL,

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +26,7 @@ public class OrderService {
     public String addOrder(List<ProductDto> list){
         list.forEach(
                 productDto -> {
+                    Date date = new Date();
                     Order order = Order.builder()
                             .username(productDto.getUsername())
                             .productId(productDto.getProductId())
