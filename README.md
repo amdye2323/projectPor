@@ -25,6 +25,10 @@ JAVA, SPRINGBOOT, MYSQL , DOCKER-COMPOSE 로 구성된 Java Springboot Project �
 | Security         | 5.5.1    |
 | MySql        | 1.18.20   |
 
+## 테이블 설계 및 주요 설명 링크
+
+\draw.io 링크 \https://drive.google.com/file/d/1yFaBBd9cuS-Mj6ECTll_PVf3kQ079Mz4/view?usp=sharing
+
 ## 시작하기
 
 ### 필수사항
